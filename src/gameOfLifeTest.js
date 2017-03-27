@@ -29,25 +29,37 @@ context('生命游戏', function () {
       let cells = [[0,0,1], [0,1,0],[1,0,0]]
       console.log(game(cells))
       assert.deepEqual(game(cells), [[0,0,0], [0,1,0], [0,0,0]])
-      // game(cells).should.deepEqual([[0,0], [1,1], [0,0]])
+      // game(cells).should.deepEqual([[0,0,0], [0,1,0], [0,0,0]])
     })
     it('a live cell with two live neighbour on the top-left and bottom-right will live after tick', function () {
       let cells = [[1,0,0], [0,1,0],[0,0,1]]
       console.log(game(cells))
       assert.deepEqual(game(cells), [[0,0,0], [0,1,0], [0,0,0]])
-      // game(cells).should.deepEqual([[0,0], [1,1], [0,0]])
+      // game(cells).should.deepEqual([[0,0,0], [0,1,0], [0,0,0]])
     })
     it('a live cell with three live neighbour will live after tick', function () {
       let cells = [[1,1,0], [0,1,0],[0,0,1]]
       console.log(game(cells))
       assert.deepEqual(game(cells), [[1,1,0], [1,1,1], [0,0,0]])
-      // game(cells).should.deepEqual([[0,0], [1,1], [0,0]])
+      // game(cells).should.deepEqual([[1,1,0], [1,1,1], [0,0,0]])
     })
     it('a dead cell with two live neighbour will still dead after tick', function () {
       let cells = [[1,0], [0,1]                                                   ]
       console.log(game(cells))
       assert.deepEqual(game(cells), [[0,0], [0,0]])
-      // game(cells).should.deepEqual([[0,0], [1,1], [0,0]])
+      // game(cells).should.deepEqual([[0,0], [0,0]])
+    })
+    it('a dead cell with three live neighbour will live after tick', function () {
+      let cells = [[1,1], [1,0]                                                   ]
+      console.log(game(cells))
+      assert.deepEqual(game(cells), [[1,1], [1,1]])
+      // game(cells).should.deepEqual([[1,1], [1,1]])
+    })
+    it('a dead cell with four live neighbour will still dead after tick', function () {
+      let cells = [[0,1,0], [1,0,1],[0,1,0]]
+      console.log(game(cells))
+      assert.deepEqual(game(cells), [[0,1,0], [1,0,1],[0,1,0]])
+      // game(cells).should.deepEqual([[1,1], [1,1]])
     })
   })
 })
